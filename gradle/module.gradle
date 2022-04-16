@@ -13,14 +13,15 @@ jmh {
 }
 
 jar {
-    manifest.attributes.put('Implementation-Title', project.name)
-    manifest.attributes.put('Implementation-Vendor-Id', project.group)
+    manifest.attributes.put('Implementation-Title', 'Caramel logging ' + project.name.replace('logging-', ''))
     manifest.attributes.put('Implementation-Version', project.version)
-    manifest.attributes.put('Implementation-URL', 'https://caramel.woutis.com/' + project.name.replace('caramel-', ''))
-    manifest.attributes.put('Automatic-Module-Name', project.name.replace('-', '.'))  // for Jigsaw
+    manifest.attributes.put('Implementation-Vendor-Id', project.group)
+    manifest.attributes.put('Implementation-Vendor', 'Woutis')
+    manifest.attributes.put('Implementation-URL', 'https://caramel.woutis.com/')
+    manifest.attributes.put('Automatic-Module-Name', 'caramel.' + project.name.replace('-', '.'))  // for Jigsaw
     manifest.attributes.put('Build-Jdk-Spec', project.sourceCompatibility)
-    manifest.attributes.put('Build-Jdk', "${System.getProperty("java.version")} (${System.getProperty("java.specification.vendor")})")
-    manifest.attributes.put('Built-By', 'Kweny')
+    manifest.attributes.put('Build-Jdk', "${System.getProperty("java.version")}")
+    manifest.attributes.put('Built-By', 'Woutis')
     manifest.attributes.put('Created-By', 'Gradle ' + gradle.gradleVersion)
 
     from("${rootDir}") {
