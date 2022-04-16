@@ -1,0 +1,23 @@
+description = "Caramel Logging (Bill of Materials)"
+
+apply plugin: 'java-platform'
+apply from: "$rootDir/gradle/publications.gradle"
+
+group = 'caramel'
+
+dependencies {
+    constraints {
+        parent.moduleProjects.sort { "$it.name" }.each {
+            api it
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'caramel-logging-framework-bom'
+            from components.javaPlatform
+        }
+    }
+}

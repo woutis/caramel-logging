@@ -1,0 +1,6 @@
+include 'framework-bom'
+
+rootProject.name = 'caramel-logging'
+rootProject.children.each {project ->
+    project.buildFileName = "${project.name}.gradle"
+}

@@ -1,0 +1,134 @@
+plugins {
+    id "me.champeau.gradle.jmh" version "0.5.3" apply false
+}
+
+ext {
+    moduleProjects = subprojects.findAll {it.name.startsWith('caramel-logging') }
+    javaProjects = subprojects - project(":framework-bom") + rootProject
+
+    // ------------------------------ dependencies ------------------------------
+    DependencyVersions = [
+            slf4j: '1.7.36',
+            log4j: '2.17.2',
+            akka: '2.6.19',
+    ]
+}
+
+configure(allprojects) { project ->
+    buildscript {
+        repositories {
+            maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+            maven { url "https://plugins.gradle.org/m2/" }
+            mavenCentral()
+        }
+
+        apply from: "${rootDir}/gradle/module-task-skippable.gradle"
+    }
+
+    repositories {
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "https://repo.spring.io/release/" }
+        maven { url "https://repo.spring.io/milestone/" }
+        mavenCentral()
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            cacheChangingModulesFor 0, "seconds"
+            cacheDynamicVersionsFor 0, "seconds"
+        }
+    }
+}
+
+configure(javaProjects) { project ->
+    group = 'caramel.logging'
+
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+    apply plugin: "checkstyle"
+
+    sourceCompatibility = 8
+    targetCompatibility = 8
+
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+    compileTestJava {
+        options.encoding = "UTF-8"
+    }
+
+    checkstyle {
+        toolVersion = "8.41"
+        configDirectory.set(rootProject.file("src/checkstyle"))
+        checkstyleMain.enabled = false
+        checkstyleTest.enabled = false
+    }
+
+    configurations {
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            cacheChangingModulesFor 0, "seconds"
+            cacheDynamicVersionsFor 0, "seconds"
+        }
+
+        resolutionStrategy {
+        }
+    }
+
+    dependencies {
+        implementation 'org.jetbrains:annotations:23.0.0'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+        testImplementation 'org.hamcrest:hamcrest:2.2'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+        testRuntimeOnly 'org.apache.logging.log4j:log4j-core:' + project.DependencyVersions.log4j
+        testRuntimeOnly 'org.apache.logging.log4j:log4j-slf4j-impl:' + project.DependencyVersions.log4j
+        testRuntimeOnly 'org.apache.logging.log4j:log4j-jul:' + project.DependencyVersions.log4j
+
+        checkstyle("io.spring.javaformat:spring-javaformat-checkstyle:0.0.31")
+    }
+
+    test {
+        useJUnitPlatform()
+        include(["**/*Tests.class", "**/*Test.class"])
+        systemProperty("java.awt.headless", "true")
+    }
+
+    ext.javadocLinks = [
+            "https://docs.oracle.com/javase/8/docs/api/",
+            "https://docs.oracle.com/javaee/7/api/",
+            "https://docs.oracle.com/cd/E13222_01/wls/docs90/javadocs/",  // CommonJ
+            "https://www.ibm.com/support/knowledgecenter/SS7JFU_8.5.5/com.ibm.websphere.javadoc.doc/web/apidocs/",
+            "https://glassfish.java.net/nonav/docs/v3/api/",
+            "https://docs.jboss.org/jbossas/javadoc/4.0.5/connector/",
+            "https://docs.jboss.org/jbossas/javadoc/7.1.2.Final/",
+            "https://tiles.apache.org/tiles-request/apidocs/",
+            "https://tiles.apache.org/framework/apidocs/",
+            "https://www.eclipse.org/jetty/javadoc/jetty-9/index.html",
+            "https://www.eclipse.org/aspectj/doc/released/aspectj5rt-api/",
+            "https://www.ehcache.org/apidocs/2.10.4/",
+            "https://www.quartz-scheduler.org/api/2.3.0/",
+            "https://fasterxml.github.io/jackson-core/javadoc/2.11/",
+            "https://fasterxml.github.io/jackson-databind/javadoc/2.11/",
+            "https://fasterxml.github.io/jackson-dataformat-xml/javadoc/2.11/",
+            "https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/",
+            "https://projectreactor.io/docs/test/release/api/",
+            "https://junit.org/junit4/javadoc/4.13.2/",
+            "https://junit.org/junit5/docs/5.7.1/api/",
+            "https://docs.spring.io/spring-framework/docs/5.3.4/javadoc-api/",
+            "https://docs.spring.io/spring-boot/docs/2.4.3/api/"
+    ] as String[]
+
+}
+
+configure(moduleProjects) { project ->
+    apply from: "${rootDir}/gradle/caramel-module.gradle"
+}
+
+configure(rootProject) {
+    description = 'Caramel Logging'
+
+    apply from: "${rootDir}/gradle/publications.gradle"
+}
