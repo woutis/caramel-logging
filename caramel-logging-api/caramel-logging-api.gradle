@@ -1,0 +1,9 @@
+description = 'Caramel Logging API'
+
+dependencies {
+    api 'org.slf4j:slf4j-api:' + project.DependencyVersions.slf4j
+    // TODO-Kweny slf4j-ext
+
+    implementation 'com.typesafe.akka:akka-actor_2.13:' + project.DependencyVersions.akka
+    implementation 'com.typesafe.akka:akka-slf4j_2.13:' + project.DependencyVersions.akka
+}

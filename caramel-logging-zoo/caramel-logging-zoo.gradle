@@ -1,0 +1,24 @@
+archivesBaseName = 'caramel-zoo'
+
+sourceSets {
+    main {
+        java.srcDirs = []
+        resources.srcDirs = []
+    }
+    test {
+        java.srcDirs = []
+        resources.srcDirs = []
+    }
+}
+
+ext {
+    ZooDependencyVersions = [
+
+    ]
+}
+
+configurations {
+}
+
+dependencies {
+}
