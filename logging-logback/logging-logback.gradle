@@ -1,0 +1,11 @@
+description = 'Caramel Logging using Log4j'
+
+dependencies {
+    api project(':logging-core')
+
+    implementation 'org.slf4j:jcl-over-slf4j:' + project.DependencyVersions.slf4j
+    implementation 'org.slf4j:jul-to-slf4j:' + project.DependencyVersions.slf4j
+    implementation 'org.slf4j:log4j-over-slf4j:' + project.DependencyVersions.slf4j
+
+    implementation 'ch.qos.logback:logback-classic:' + project.DependencyVersions.logback
+}

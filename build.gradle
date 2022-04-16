@@ -44,7 +44,7 @@ configure(allprojects) { project ->
 }
 
 configure(javaProjects) { project ->
-    group = 'caramel.logging'
+    group = 'com.woutis.caramel'
 
     apply plugin: 'java-library'
     apply plugin: 'idea'

@@ -3,7 +3,7 @@ description = "Caramel Logging (Bill of Materials)"
 apply plugin: 'java-platform'
 apply from: "$rootDir/gradle/publications.gradle"
 
-group = 'caramel'
+group = 'com.woutis.caramel'
 
 dependencies {
     constraints {

@@ -1,15 +1,13 @@
 include 'framework-bom'
 
-include 'caramel-logging-api'
-include 'caramel-logging-log4j'
-include 'caramel-logging-logback'
+include 'logging-core'
+include 'logging-log4j'
+include 'logging-logback'
 
-include 'caramel-logging-zoo'
+include 'ogging-zoo'
+include 'logging-zoo:eagle'
 
 rootProject.name = 'caramel-logging'
 rootProject.children.each {project ->
     project.buildFileName = "${project.name}.gradle"
 }
-include 'caramel-logging-zoo:eagle'
-findProject(':caramel-logging-zoo:eagle')?.name = 'eagle'
-
