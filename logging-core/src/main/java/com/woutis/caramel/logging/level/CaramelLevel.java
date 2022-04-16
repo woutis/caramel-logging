@@ -14,28 +14,57 @@
  * limitations under the License.
  */
 
-package eagle;
-
-import com.woutis.caramel.logging.level.CustomLevel;
+package com.woutis.caramel.logging.level;
 
 /**
+ * Levels used for identifying the severity of an event.
+ *
  * @author Kweny
  * @since 0.0.1
  */
-public enum TestCustomLevel implements CustomLevel {
-    RISK(250),
-    NOTICE(350),
-    DIAG(450),
-    ;
+public enum CaramelLevel {
+    /** 没有的 */
+    OFF,
 
-    private final int value;
+    /** 末日的 */
+    DOOM,
 
-    TestCustomLevel(int value) {
-        this.value = value;
-    }
+    /** 灾难的 */
+    FATAL,
 
-    @Override
-    public int value() {
-        return this.value;
-    }
+    /** 严峻的 */
+    SEVERE,
+
+    /** 错误的 */
+    ERROR,
+
+    /** 风险的 */
+    RISK,
+
+    /** 警告的 */
+    WARN,
+
+    /** 提示的 */
+    NOTICE,
+
+    /** 信息的 */
+    INFO,
+
+    /** 诊断的 */
+    DIAG,
+
+    /** 调试的 */
+    DEBUG,
+
+    /** 详细的 */
+    DETAIL,
+
+    /** 追溯的 */
+    TRACE,
+
+    /** 冗长的 */
+    VERBOSE,
+
+    /** 所有的 */
+    ALL,
 }

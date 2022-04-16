@@ -16,7 +16,7 @@
 
 package eagle;
 
-import caramel.logging.CaramelLogger;
+import com.woutis.caramel.logging.CaramelLogger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

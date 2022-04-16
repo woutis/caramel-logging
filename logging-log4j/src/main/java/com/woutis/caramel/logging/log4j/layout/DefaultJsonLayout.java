@@ -14,28 +14,13 @@
  * limitations under the License.
  */
 
-package eagle;
-
-import com.woutis.caramel.logging.level.CustomLevel;
+package com.woutis.caramel.logging.log4j.layout;
 
 /**
+ * json layout for Log4j
+ *
  * @author Kweny
  * @since 0.0.1
  */
-public enum TestCustomLevel implements CustomLevel {
-    RISK(250),
-    NOTICE(350),
-    DIAG(450),
-    ;
-
-    private final int value;
-
-    TestCustomLevel(int value) {
-        this.value = value;
-    }
-
-    @Override
-    public int value() {
-        return this.value;
-    }
+public class DefaultJsonLayout {
 }

@@ -4,7 +4,7 @@ include 'logging-core'
 include 'logging-log4j'
 include 'logging-logback'
 
-include 'ogging-zoo'
+include 'logging-zoo'
 include 'logging-zoo:eagle'
 
 rootProject.name = 'caramel-logging'

@@ -14,28 +14,24 @@
  * limitations under the License.
  */
 
-package eagle;
+package com.woutis.caramel.logging.level;
 
-import com.woutis.caramel.logging.level.CustomLevel;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.Marker;
 
 /**
+ * Custom Levels Logging Handler
+ *
  * @author Kweny
  * @since 0.0.1
  */
-public enum TestCustomLevel implements CustomLevel {
-    RISK(250),
-    NOTICE(350),
-    DIAG(450),
-    ;
+public interface CustomLevelHandler {
 
-    private final int value;
+    boolean isEnabled(Logger logger, CustomLevel level, Marker marker);
 
-    TestCustomLevel(int value) {
-        this.value = value;
-    }
+    void log(Logger logger, CustomLevel level, Marker marker, Throwable thrown, String message, Object... arguments);
 
-    @Override
-    public int value() {
-        return this.value;
-    }
+    Class<? extends ILoggerFactory> factoryClass();
+
 }

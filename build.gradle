@@ -3,7 +3,7 @@ plugins {
 }
 
 ext {
-    moduleProjects = subprojects.findAll {it.name.startsWith('caramel-logging') }
+    moduleProjects = subprojects.findAll {it.name.startsWith('logging') }
     javaProjects = subprojects - project(":framework-bom") + rootProject
 
     // ------------------------------ dependencies ------------------------------
@@ -87,9 +87,9 @@ configure(javaProjects) { project ->
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
         testImplementation 'org.hamcrest:hamcrest:2.2'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-//        testRuntimeOnly 'org.apache.logging.log4j:log4j-core:' + project.DependencyVersions.log4j
-//        testRuntimeOnly 'org.apache.logging.log4j:log4j-slf4j-impl:' + project.DependencyVersions.log4j
-//        testRuntimeOnly 'org.apache.logging.log4j:log4j-jul:' + project.DependencyVersions.log4j
+        testRuntimeOnly 'org.apache.logging.log4j:log4j-core:' + project.DependencyVersions.log4j
+        testRuntimeOnly 'org.apache.logging.log4j:log4j-slf4j-impl:' + project.DependencyVersions.log4j
+        testRuntimeOnly 'org.apache.logging.log4j:log4j-jul:' + project.DependencyVersions.log4j
 
         checkstyle("io.spring.javaformat:spring-javaformat-checkstyle:0.0.31")
     }
