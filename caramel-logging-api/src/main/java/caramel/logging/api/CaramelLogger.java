@@ -145,7 +145,7 @@ public abstract class CaramelLogger {
 
     protected final Logger logger;
     protected final Marker defaultMarker;
-    protected CustomLevelHandler levelHandler;
+    protected CustomLevelHandler customLevelHandler;
 
     protected CaramelLogger(String name) {
         this(name, null);
@@ -171,7 +171,7 @@ public abstract class CaramelLogger {
         ServiceLoader<CustomLevelHandler> handlers = ServiceLoader.load(CustomLevelHandler.class);
         for (CustomLevelHandler handler : handlers) {
             if (handler.factoryClass() == LoggerFactory.getILoggerFactory().getClass()) {
-                this.levelHandler = handler;
+                this.customLevelHandler = handler;
                 break;
             }
         }
@@ -182,13 +182,14 @@ public abstract class CaramelLogger {
     }
 
     public boolean isEnabled(CustomLevel level, Marker marker) {
-        return this.levelHandler.isEnabled(this.logger, level, marker);
+        return this.customLevelHandler.isEnabled(this.logger, level, marker);
     }
 
     public boolean isEnabled(CustomLevel level) {
-        return this.levelHandler.isEnabled(this.logger, level, this.defaultMarker);
+        return this.customLevelHandler.isEnabled(this.logger, level, this.defaultMarker);
     }
 
+    // ----- log ----- beginning
     public abstract void log(CustomLevel level, Marker marker, Throwable thrown, String message, Object... arguments);
 
     public abstract void log(CustomLevel level, Marker marker, String message, Object... arguments);
@@ -196,55 +197,120 @@ public abstract class CaramelLogger {
     public abstract void log(CustomLevel level, Throwable thrown, String message, Object... arguments);
 
     public abstract void log(CustomLevel level, String message, Object... arguments);
-
-    public abstract void log(CustomLevel level, String message);
+    // ----- log ----- ending
 
     // ----- doom ----- beginning
-    // TODO-Kweny doom  SPI -> find real logger by name
-//    public abstract void doom();
     // ----- doom ----- ending
 
     // ----- fatal ----- beginning
-    // TODO-Kweny fatal  SPI -> find real logger by name
     // ----- fatal ----- ending
 
     // ----- severe ----- beginning
-    // TODO-Kweny severe  SPI -> find real logger by name
     // ----- severe ----- ending
 
     // ----- error ----- beginning
+    public boolean isErrorEnabled(Marker marker) {
+        return logger.isErrorEnabled(marker);
+    }
+
+    public boolean isErrorEnabled() {
+        return this.defaultMarker != null ? isErrorEnabled(this.defaultMarker) : logger.isErrorEnabled();
+    }
+
+    public abstract void error(Marker marker, Throwable thrown, String message, Object... arguments);
+
+    public abstract void error(Marker marker, String message, Object... arguments);
+
+    public abstract void error(Throwable thrown, String message, Object... arguments);
+
+    public abstract void error(String message, Object... arguments);
     // ----- error ----- ending
 
     // ----- risk ----- beginning
-    // TODO-Kweny risk  SPI -> find real logger by name
     // ----- risk ----- ending
 
     // ----- warn ----- beginning
+    public boolean isWarnEnabled(Marker marker) {
+        return logger.isWarnEnabled(marker);
+    }
+
+    public boolean isWarnEnabled() {
+        return this.defaultMarker != null ? isWarnEnabled(this.defaultMarker) : logger.isWarnEnabled();
+    }
+
+    public abstract void warn(Marker marker, Throwable thrown, String message, Object... arguments);
+
+    public abstract void warn(Marker marker, String message, Object... arguments);
+
+    public abstract void warn(Throwable thrown, String message, Object... arguments);
+
+    public abstract void warn(String message, Object... arguments);
     // ----- warn ----- ending
 
     // ----- prompt ----- beginning
-    // TODO-Kweny prompt  SPI -> find real logger by name
     // ----- prompt ----- ending
 
     // ----- info ----- beginning
+    public boolean isInfoEnabled(Marker marker) {
+        return logger.isInfoEnabled(marker);
+    }
+
+    public boolean isInfoEnabled() {
+        return this.defaultMarker != null ? isInfoEnabled(this.defaultMarker) : logger.isInfoEnabled();
+    }
+
+    public abstract void info(Marker marker, Throwable thrown, String message, Object... arguments);
+
+    public abstract void info(Marker marker, String message, Object... arguments);
+
+    public abstract void info(Throwable thrown, String message, Object... arguments);
+
+    public abstract void info(String message, Object... arguments);
     // ----- info ----- ending
 
     // ----- diag ----- beginning
-    // TODO-Kweny diag  SPI -> find real logger by name
     // ----- diag ----- ending
 
     // ----- debug ----- beginning
+    public boolean isDebugEnabled(Marker marker) {
+        return logger.isDebugEnabled(marker);
+    }
+
+    public boolean isDebugEnabled() {
+        return this.defaultMarker != null ? isDebugEnabled(this.defaultMarker) : logger.isDebugEnabled();
+    }
+
+    public abstract void debug(Marker marker, Throwable thrown, String message, Object... arguments);
+
+    public abstract void debug(Marker marker, String message, Object... arguments);
+
+    public abstract void debug(Throwable thrown, String message, Object... arguments);
+
+    public abstract void debug(String message, Object... arguments);
     // ----- debug ----- ending
 
     // ----- detail ----- beginning
-    // TODO-Kweny detail  SPI -> find real logger by name
     // ----- detail ----- ending
 
     // ----- trace ----- beginning
+    public boolean isTraceEnabled(Marker marker) {
+        return logger.isTraceEnabled(marker);
+    }
+
+    public boolean isTraceEnabled() {
+        return this.defaultMarker != null ? isTraceEnabled(this.defaultMarker) : logger.isTraceEnabled();
+    }
+
+    public abstract void trace(Marker marker, Throwable thrown, String message, Object... arguments);
+
+    public abstract void trace(Marker marker, String message, Object... arguments);
+
+    public abstract void trace(Throwable thrown, String message, Object... arguments);
+
+    public abstract void trace(String message, Object... arguments);
     // ----- trace ----- ending
 
     // ----- verbose ----- beginning
-    // TODO-Kweny verbose  SPI -> find real logger by name
     // ----- verbose ----- ending
 
 }

@@ -41,7 +41,7 @@ public class Log4jLevel {
 
     public static final Level WARN = Level.WARN; // 300
 
-    public static final Level PROMPT = Level.forName("PROMPT", 350);
+    public static final Level NOTICE = Level.forName("NOTICE", 350);
 
     public static final Level INFO = Level.INFO; // 400
 
@@ -74,8 +74,8 @@ public class Log4jLevel {
                     return Log4jLevel.RISK;
                 case WARN:
                     return Log4jLevel.WARN;
-                case PROMPT:
-                    return Log4jLevel.PROMPT;
+                case NOTICE:
+                    return Log4jLevel.NOTICE;
                 case INFO:
                     return Log4jLevel.INFO;
                 case DIAG:

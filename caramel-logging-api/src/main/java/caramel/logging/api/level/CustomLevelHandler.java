@@ -28,9 +28,9 @@ import org.slf4j.Marker;
  */
 public interface CustomLevelHandler {
 
-    void log(Logger logger, CustomLevel level, Marker marker, Throwable thrown, String message, Object... arguments);
-
     boolean isEnabled(Logger logger, CustomLevel level, Marker marker);
+
+    void log(Logger logger, CustomLevel level, Marker marker, Throwable thrown, String message, Object... arguments);
 
     Class<? extends ILoggerFactory> factoryClass();
 

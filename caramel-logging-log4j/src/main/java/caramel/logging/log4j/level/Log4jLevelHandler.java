@@ -19,22 +19,32 @@ package caramel.logging.log4j.level;
 import caramel.logging.api.level.CustomLevel;
 import caramel.logging.api.level.CustomLevelHandler;
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.slf4j.Log4jLoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
 
 /**
- * TODO-Kweny Log4jLevelHandler
- *
  * @author Kweny
  * @since 0.0.1
  */
 public class Log4jLevelHandler implements CustomLevelHandler {
 
     @Override
+    public boolean isEnabled(Logger logger, CustomLevel level, Marker marker) {
+        org.apache.logging.log4j.Logger rLogger = LogManager.getLogger(logger.getName());
+        Level rLevel = Level.forName(level.name(), level.value());
+        if (marker != null) {
+            return rLogger.isEnabled(rLevel, MarkerManager.getMarker(marker.getName()));
+        } else {
+            return rLogger.isEnabled(rLevel);
+        }
+    }
+
+    @Override
     public void log(Logger logger, CustomLevel level, Marker marker, Throwable thrown, String message, Object... arguments) {
-        org.apache.logging.log4j.Logger rLogger = (org.apache.logging.log4j.Logger) logger;
+        org.apache.logging.log4j.Logger rLogger = LogManager.getLogger(logger.getName());
         Level rLevel = Level.forName(level.name(), level.value());
         if (rLogger.isEnabled(rLevel)) {
             if (thrown != null) {
@@ -50,17 +60,6 @@ public class Log4jLevelHandler implements CustomLevelHandler {
                     rLogger.log(rLevel, message, arguments);
                 }
             }
-        }
-    }
-
-    @Override
-    public boolean isEnabled(Logger logger, CustomLevel level, Marker marker) {
-        org.apache.logging.log4j.Logger rLogger = (org.apache.logging.log4j.Logger) logger;
-        Level rLevel = Level.forName(level.name(), level.value());
-        if (marker != null) {
-            return rLogger.isEnabled(rLevel, MarkerManager.getMarker(marker.getName()));
-        } else {
-            return rLogger.isEnabled(rLevel);
         }
     }
 

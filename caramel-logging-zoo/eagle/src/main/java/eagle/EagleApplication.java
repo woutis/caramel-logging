@@ -16,6 +16,7 @@
 
 package eagle;
 
+import caramel.logging.api.CaramelLogger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -33,8 +34,12 @@ public class EagleApplication {
 //        System.out.println(LoggerFactory.getILoggerFactory().getClass().getName());
 //        logger.info("testtt");
 
-//        CaramelLogger cLogger = CaramelLogger.getLogger(EagleApplication.class);
-//        cLogger.doom();
+        CaramelLogger cLogger = CaramelLogger.getLogger(EagleApplication.class);
+        System.out.println("RISK: " + cLogger.isEnabled(TestCustomLevel.RISK));
+        System.out.println("NOTICE: " + cLogger.isEnabled(TestCustomLevel.NOTICE));
+        System.out.println("DIAG: " + cLogger.isEnabled(TestCustomLevel.DIAG));
+
+        cLogger.log(TestCustomLevel.NOTICE, "some notice");
 
         SpringApplication.run(EagleApplication.class, args);
     }

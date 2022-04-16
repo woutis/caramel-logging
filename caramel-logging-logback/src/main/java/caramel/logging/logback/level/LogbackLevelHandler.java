@@ -24,21 +24,19 @@ import org.slf4j.Logger;
 import org.slf4j.Marker;
 
 /**
- * TODO-Kweny LogbackLevelHandler
- *
  * @author Kweny
  * @since 0.0.1
  */
 public class LogbackLevelHandler implements CustomLevelHandler {
 
     @Override
-    public void log(Logger logger, CustomLevel level, Marker marker, Throwable thrown, String message, Object... arguments) {
-
+    public boolean isEnabled(Logger logger, CustomLevel level, Marker marker) {
+        return false;
     }
 
     @Override
-    public boolean isEnabled(Logger logger, CustomLevel level, Marker marker) {
-        return false;
+    public void log(Logger logger, CustomLevel level, Marker marker, Throwable thrown, String message, Object... arguments) {
+
     }
 
     @Override

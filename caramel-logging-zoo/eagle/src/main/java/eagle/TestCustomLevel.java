@@ -14,19 +14,28 @@
  * limitations under the License.
  */
 
-import caramel.logging.logback.level.LogbackLevel;
+package eagle;
+
+import caramel.logging.api.level.CustomLevel;
 
 /**
- * TODO-Kweny TTT
- *
  * @author Kweny
  * @since 0.0.1
  */
-public class TTT {
+public enum TestCustomLevel implements CustomLevel {
+    RISK(250),
+    NOTICE(350),
+    DIAG(450),
+    ;
 
-    public static void main(String[] args) throws Exception {
-        System.out.println(LogbackLevel.PROMPT.levelInt);
-        System.out.println(LogbackLevel.PROMPT.levelStr);
+    private final int value;
+
+    TestCustomLevel(int value) {
+        this.value = value;
     }
 
+    @Override
+    public int value() {
+        return this.value;
+    }
 }

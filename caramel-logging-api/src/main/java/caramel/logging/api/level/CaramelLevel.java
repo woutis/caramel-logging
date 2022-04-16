@@ -45,7 +45,7 @@ public enum CaramelLevel {
     WARN,
 
     /** 提示的 */
-    PROMPT,
+    NOTICE,
 
     /** 信息的 */
     INFO,

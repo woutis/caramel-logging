@@ -43,7 +43,7 @@ public class LogbackLevel {
 
     public static final Level WARN; // 30000
 
-    public static final Level PROMPT; // 25000
+    public static final Level NOTICE; // 25000
 
     public static final Level INFO; // 20000
 
@@ -71,7 +71,7 @@ public class LogbackLevel {
             ERROR   = Level.ERROR;
             RISK    = (Level) constructor.newInstance(35000, "RISK");
             WARN    = Level.WARN;
-            PROMPT  = (Level) constructor.newInstance(25000, "PROMPT");
+            NOTICE  = (Level) constructor.newInstance(25000, "NOTICE");
             INFO    = Level.INFO;
             DIAG    = (Level) constructor.newInstance(15000, "DIAG");
             DEBUG   = Level.DEBUG;
@@ -103,8 +103,8 @@ public class LogbackLevel {
                     return LogbackLevel.RISK;
                 case WARN:
                     return LogbackLevel.WARN;
-                case PROMPT:
-                    return LogbackLevel.PROMPT;
+                case NOTICE:
+                    return LogbackLevel.NOTICE;
                 case INFO:
                     return LogbackLevel.INFO;
                 case DIAG:
