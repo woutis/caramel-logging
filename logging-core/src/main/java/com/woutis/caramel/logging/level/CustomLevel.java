@@ -25,21 +25,21 @@ import com.woutis.caramel.logging.CaramelLogger;
  * used for identifying the severity of an event.
  * Levels are organized from most specific to least:
  * <table>
- *     <tr><th>        </th> <th>Name   </th> <th>Value  </th> <th>Description</th></tr>
- *     <tr><th>Native  </th> <th>OFF    </th> <th>0      </th> <th>No events will be logged.</th></tr>
- *     <tr><th>Custom  </th> <th>DOOM   </th> <th>50     </th> <th>Custom example for reference: Doomsday.</th></tr>
- *     <tr><th>Native  </th> <th>FATAL  </th> <th>100    </th> <th>A fatal event that will prevent the application from continuing.</th></tr>
- *     <tr><th>Custom  </th> <th>SEVERE </th> <th>150    </th> <th>Custom example for reference: Serious error.</th></tr>
- *     <tr><th>Native  </th> <th>ERROR  </th> <th>200    </th> <th>An error in the application, possibly recoverable.</th></tr>
- *     <tr><th>Custom  </th> <th>RISK   </th> <th>250    </th> <th>Custom example for reference: Risky.</th></tr>
- *     <tr><th>Native  </th> <th>WARN   </th> <th>300    </th> <th>An event that might possible lead to an error.</th></tr>
- *     <tr><th>Custom  </th> <th>NOTICE </th> <th>350    </th> <th>Custom example for reference: Notice.</th></tr>
- *     <tr><th>Native  </th> <th>INFO   </th> <th>400    </th> <th>An event for informational purposes.</th></tr>
- *     <tr><th>Custom  </th> <th>DIAG   </th> <th>450    </th> <th>Custom example for reference: Diagnose.</th></tr>
- *     <tr><th>Native  </th> <th>DEBUG  </th> <th>500    </th> <th>A general debugging event.</th></tr>
- *     <tr><th>Custom  </th> <th>DETAIL </th> <th>550    </th> <th>Custom example for reference: Details.</th></tr>
- *     <tr><th>Native  </th> <th>TRACE  </th> <th>600    </th> <th>A fine-grained debug message, typically capturing the flow through the application.</th></tr>
- *     <tr><th>Custom  </th> <th>VERBOSE</th> <th>650    </th> <th>Custom example for reference: Verbose.</th></tr>
+ *     <tr><th>        </th> <th>Name   </th> <th>Value </th> <th>Description</th></tr>
+ *     <tr><th>Native  </th> <th>OFF    </th> <th>0     </th> <th>No events will be logged.</th></tr>
+ *     <tr><th>Custom  </th> <th>DOOM   </th> <th>50    </th> <th>Custom example for reference: Doomsday.</th></tr>
+ *     <tr><th>Native  </th> <th>FATAL  </th> <th>100   </th> <th>A fatal event that will prevent the application from continuing.</th></tr>
+ *     <tr><th>Custom  </th> <th>SEVERE </th> <th>150   </th> <th>Custom example for reference: Serious error.</th></tr>
+ *     <tr><th>Native  </th> <th>ERROR  </th> <th>200   </th> <th>An error in the application, possibly recoverable.</th></tr>
+ *     <tr><th>Custom  </th> <th>RISK   </th> <th>250   </th> <th>Custom example for reference: Risky.</th></tr>
+ *     <tr><th>Native  </th> <th>WARN   </th> <th>300   </th> <th>An event that might possible lead to an error.</th></tr>
+ *     <tr><th>Custom  </th> <th>NOTICE </th> <th>350   </th> <th>Custom example for reference: Notice.</th></tr>
+ *     <tr><th>Native  </th> <th>INFO   </th> <th>400   </th> <th>An event for informational purposes.</th></tr>
+ *     <tr><th>Custom  </th> <th>DIAG   </th> <th>450   </th> <th>Custom example for reference: Diagnose.</th></tr>
+ *     <tr><th>Native  </th> <th>DEBUG  </th> <th>500   </th> <th>A general debugging event.</th></tr>
+ *     <tr><th>Custom  </th> <th>DETAIL </th> <th>550   </th> <th>Custom example for reference: Details.</th></tr>
+ *     <tr><th>Native  </th> <th>TRACE  </th> <th>600   </th> <th>A fine-grained debug message, typically capturing the flow through the application.</th></tr>
+ *     <tr><th>Custom  </th> <th>VERBOSE</th> <th>650   </th> <th>Custom example for reference: Verbose.</th></tr>
  *     <tr><th>Native  </th> <th>ALL    </th> <th>MaxInt</th> <th>All events should be logged.</th></tr>
  * </table>
  *
