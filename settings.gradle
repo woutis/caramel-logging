@@ -1,4 +1,4 @@
-include 'caramel-logging-bom'
+include 'framework-bom'
 
 include 'logging-core'
 include 'logging-log4j'

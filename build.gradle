@@ -4,7 +4,7 @@ plugins {
 
 ext {
     moduleProjects = subprojects.findAll {it.name.startsWith('logging') }
-    javaProjects = subprojects - project(":caramel-logging-bom") + rootProject
+    javaProjects = subprojects - project(":framework-bom") + rootProject
 
     // ------------------------------ dependencies ------------------------------
     DependencyVersions = [
